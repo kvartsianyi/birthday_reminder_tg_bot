@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TelegrafModule } from 'nestjs-telegraf';
 
+import { AppController } from './app.controller';
 import { BotModule } from './bot/bot.module';
 import { RecordModule } from './record/record.module';
 import { UserModule } from './user/user.module';
@@ -21,6 +22,12 @@ const session = new LocalSession({ database: '/tmp/local_session.json' });
       useFactory: (configService: ConfigService) => ({
         middlewares: [session.middleware()],
         token: configService.get('TELEGRAM_BOT_TOKEN'),
+        launchOptions: {
+          webhook: {
+            domain: configService.get('WEBHOOK_URL'),
+            hookPath: `/tg-webhook`,
+          },
+        },
       }),
       inject: [ConfigService],
     }),
@@ -35,5 +42,6 @@ const session = new LocalSession({ database: '/tmp/local_session.json' });
     BotModule,
     RecordModule,
   ],
+  controllers: [AppController],
 })
 export class AppModule {}
