@@ -9,7 +9,7 @@ import { BotModule } from './bot/bot.module';
 import { RecordModule } from './record/record.module';
 import { UserModule } from './user/user.module';
 
-const session = new LocalSession({ database: './tmplocal_session.json' });
+const session = new LocalSession({ database: './tmp/local_session.json' });
 
 @Module({
   imports: [
