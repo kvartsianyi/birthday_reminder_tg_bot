@@ -3,13 +3,13 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TelegrafModule } from 'nestjs-telegraf';
-
-const LocalSession = require('telegraf-session-local');
 import { BotModule } from './bot/bot.module';
 import { RecordModule } from './record/record.module';
 import { UserModule } from './user/user.module';
 
-const session = new LocalSession({ database: 'local_session.json' });
+const LocalSession = require('telegraf-session-local');
+
+const session = new LocalSession({ database: './tmp/local_session.json' });
 
 @Module({
   imports: [
