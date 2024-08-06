@@ -9,7 +9,7 @@ import { UserModule } from './user/user.module';
 
 const LocalSession = require('telegraf-session-local');
 
-const session = new LocalSession({ database: './tmp/local_session.json' });
+const session = new LocalSession({ database: '/tmp/local_session.json' });
 
 @Module({
   imports: [
