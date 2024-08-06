@@ -4,7 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TelegrafModule } from 'nestjs-telegraf';
 
-import * as LocalSession from 'telegraf-session-local';
+const LocalSession = require('telegraf-session-local');
 import { BotModule } from './bot/bot.module';
 import { RecordModule } from './record/record.module';
 import { UserModule } from './user/user.module';
