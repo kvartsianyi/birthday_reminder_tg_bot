@@ -23,7 +23,7 @@ const session = new LocalSession({ database: 'local_session.json' });
         token: configService.get('TELEGRAM_BOT_TOKEN'),
         launchOptions: {
           webhook: {
-            domain: configService.get('WEBHOOK_URL'),
+            domain: configService.get('API_URL'),
             hookPath: '/tg-webhook',
           },
         },
